@@ -83,7 +83,7 @@ app.post("/movies/", async (request, response) => {
   response.send("Movie Successfully Added");
 });
 
-app.put("/movie/:movieId/", async (request, response) => {
+app.put("/movies/:movieId/", async (request, response) => {
   const { movieId } = request.params;
   const { directorId, movieName, leadActor } = request.body;
   const updateMovieQuery = `
@@ -92,7 +92,7 @@ app.put("/movie/:movieId/", async (request, response) => {
     SET
       director_id = '${directorId}',
       movie_name = '${movieName}',
-      lead_actor = '${leadActor}
+      lead_actor = '${leadActor}',
     WHERE
       movie_id = ${movieId};`;
 
@@ -100,7 +100,7 @@ app.put("/movie/:movieId/", async (request, response) => {
   response.send("Movie Details Updated");
 });
 
-app.delete("/movie/:movieId/", async (request, response) => {
+app.delete("/movies/:movieId/", async (request, response) => {
   const { movieId } = request.params;
   const deleteMovieQuery = `
     DELETE FROM
